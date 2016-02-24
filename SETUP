@@ -1,0 +1,8 @@
+# build binary package
+python setup.py bdist 
+
+# build source package
+python setup.py sdist 
+
+# install
+python setup.py install

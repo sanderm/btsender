@@ -1,0 +1,145 @@
+=====================
+ BTSender_ 1.1.0
+=====================
+
+:Author: Arve Barsnes/Sander Johansen
+:Contact: arveba/sanderj@ifi.uio.no
+
+.. _BTSender: http://folk.uio.no/sanderj/btsender/
+
+.. contents::
+.. sectnum::
+
+Introduction
+============
+
+BTSender is a package that will act as an automatic file pusher
+that sends a list of files to any detectable BlueTooth devices in
+the vicinity. 
+
+
+Compatibility
+=============
+
+There are three required libraries to use this package, BlueZ [bluez],
+PyBlueZ [pybluez] and openobex [openobex].
+
+
+Installation
+============
+
+Unpack the file. This is typically accomplished by running::
+
+ $ tar -xzf <archive-name>
+
+Enter the generated directory, and then run this::
+
+ $ python setup.py install
+
+The package will be installed to ~/BTSender
+
+
+Implementation notes
+====================
+
+The shell around the core sending functions is implemented in
+Python, while the actual sending, which uses the obex protocol, is
+mostly ripped directly from ussp-push [ussp-push], only slightly
+rewritten to allow it to be called directly from within python, and
+other small changes to accomodate the wanted functionality.
+
+
+Sample usage
+============
+
+The package is easy to use. All you have to do is go to the
+installation-directory (~/BTSender). There you type::
+
+ $ ./start.sh
+
+This will setup an important environment variable so the program
+will find the libraries, and start BTSender.
+
+Once running, it will search for any nearby BlueTooth devices and
+send them the files. Any files in the files subdirectory will be
+pushed out, so if there are files in there you don't want to send
+they will have to be deleted or moved out. Likewise, if there are
+new files you want to push out, put them in this directory, and
+all detected devices will get this file as well.
+
+
+Test suite
+==========
+
+Running the unit tests should be a simple matter of running::
+
+ $ python unittests.py
+
+Although, if you haven't already run the program beforehand, you
+should setup the variable that the start.sh script does. To do
+this manually, simply type::
+
+ $ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
+
+
+Documentation generation
+========================
+
+An HTML version of the documentation in this file may be produced
+using docutils, like this::
+
+ $ rst2html README >README.html
+
+or a LaTeX version like this::
+
+ $ rst2latex README >README.tex
+
+
+Download
+========
+
+The latest version of this library should be available at
+http://sanderm.no/btsender/BTSender-latest.tar.gz
+
+
+Licence
+=======
+
+BTSender by Arve and Sander ( Bluetooth Sender )
+Copyright (C) 2006  Arve Barsnes and Sander Johansen
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+Sander Johansen <sanderj@ifi.uio.no>
+Arve Barsnes <arveba@ifi.uio.no>
+
+References
+==========
+
+.. [bluez] http://www.bluez.org/
+
+.. [pybluez] http://org.csail.mit.edu/pybluez/
+
+.. [openobex] http://openobex.triq.net/
+
+.. [ussp-push] http://www.xmailserver.org/ussp-push.html
+
+..
+   Local Variables:
+   mode: indented-text
+   indent-tabs-mode: nil
+   sentence-end-double-space: t
+   fill-column: 70
+   End:

@@ -1,0 +1,4 @@
+include start.sh
+include files/*
+include src/*.h
+include COPYING
